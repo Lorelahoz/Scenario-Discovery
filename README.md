@@ -6,16 +6,25 @@ This is the initial Scenario Discovery library for eMotional Cities project.
 •	Model.py: Given specific coordinates for beta_female_travel, beta_TRANS_travel and beta_student_travel, it returns the computed total number of leisure trips.
 
 •	ModelSD_AL_PRIM.py:
+
 1. Load an initial 200 LHS input sample point with their corresponding simulation output value.
-	2. For a given number of iterations:
-a. Fit a GP with the initial points + new sampling points (in the first iteration, consider only the initial points)
-b. Calculate the posterior in 800 LHS sample points of the input space.
-		c. Perform PRIM in these 800 LHS computed points.
-d. Uniformly sample from the simulation model a point inside or on the border of the selected PRIM box.
-e. Compute the output of the selected point given the simulation model and add it to the initial dataset
-Repeat these steps until the stopping criteria (normally defined by the number of iterations) is reached.
-	3. Fit a GP with the final dataset of simulation points.
-	4. Calculate the value of the posterior in 800 LHS samples of the input space.
+
+2. For a given number of iterations:
+   
+	a. Fit a GP with the initial points + new sampling points (in the first iteration, consider only the initial points)
+
+	b. Calculate the posterior in 800 LHS sample points of the input space.
+ 
+	c. Perform PRIM in these 800 LHS computed points.
+
+	d. Uniformly sample from the simulation model a point inside or on the border of the selected PRIM box.
+
+	e. Compute the output of the selected point given the simulation model and add it to the initial dataset
+	Repeat these steps until the stopping criteria (normally defined by the number of iterations) is reached.
+
+3. Fit a GP with the final dataset of simulation points.
+
+4. Calculate the posterior value in 800 LHS samples of the input space.
 
 •	PRIM_AL.ipynb: a notebook that, given the previously computed points, plots the points distributions presented in Figure 8 and finds the final box by performing the PRIM algorithm over the final posterior distribution.
 
@@ -25,6 +34,7 @@ Repeat these steps until the stopping criteria (normally defined by the number o
 •	Model_BO.py: given the coordinates of the three specific dimensions, it computes the number of leisure trips in negative.
 
 In MAPs folder:
+
 •	cvt.py: functions needed to perform the MAPs Elites algorithm defined and explained
 
 •	Common.py: more functions of MAPs Elites algorithm defined and explained
